@@ -8,7 +8,7 @@ namespace p1
         class math
         {
             
-            public float l, w, h;
+            private float l, w, h;
             public math(float l, float w, float h)
             {
                 this.l = l;
