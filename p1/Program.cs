@@ -4,23 +4,46 @@ namespace p1
 {
     internal class Program
     {
-        class math
+        class Math
         {
-            public static void res(float l,float w,float h)
+
+            private float l, w, h;
+
+            public float L
             {
+                get { return l; }
+                set { l = value; }
+            }
+            public float W
+            {
+                get { return w; }
+                set { w = value; }
                 
-                Console.WriteLine((2 * l * w)+ (2 * l * h)+ (2 * h * w));
-                Console.WriteLine((2*l*h)+(2*w*h));
-                Console.WriteLine(l*w*h);
+            }
+            public float H
+            {
+                get { return h; }
+                set { h = value; } 
+            }
+
+            public Math()
+            {
+            }
+
+            public void res()
+            {
+                Console.WriteLine((2 * this.l * this.w) + (2 * this.l * this.h) + (2 * this.h * this.w));
+                Console.WriteLine((2 * this.l * this.h) + (2 * this.w * this.h));
+                Console.WriteLine(this.l * this.w * this.h);
             }
         }
         static void Main()
         {
-            float l, w, h;
-            l = Convert.ToInt64(Console.ReadLine());
-            w = Convert.ToInt64(Console.ReadLine());
-            h = Convert.ToInt64(Console.ReadLine());
-            math.res(l,w,h);
+            Math a = new Math();
+            a.L = Convert.ToSingle(Console.ReadLine());
+            a.W = Convert.ToSingle(Console.ReadLine());
+            a.H = Convert.ToSingle(Console.ReadLine());
+            a.res();
         }
     }
 }
