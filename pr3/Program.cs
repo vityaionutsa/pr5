@@ -8,68 +8,58 @@ namespace p1
         class Chiken
         {
 
-            private int age;
+            private int age, egg;
             private string name;
-            public Chiken(int age,string name)
+
+            public int Age
             {
-                this.age = age;
-                this.name = name;
-            }
-            private bool Check1()
-            {
-                if (this.age <= 0 || this.age>15)
+                get { return age; }
+                set
                 {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }   
-            }
-            private bool Check2()
-            {
-                if (this.name == " " || this.name == "")
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
+                    if (value > 0 || value <= 15)
+                    {
+                        age = value;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Age should be between 0 and 15");
+                        throw new ArgumentOutOfRangeException("value");
+                    }
                 }
             }
-            public int cw()
+
+            public string Name
             {
-                bool check1 = Check1(),check2=Check2();
-                if (check1 == false)
+                get { return name; }
+                set
                 {
-                    Console.WriteLine("Age should be between 0 and 15.");
-                }
-                if (check2 == false)
-                {
-                    Console.WriteLine("Name cannot be empty.");
-                }
-                if (check1 == true && check2 == true)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if (value == "" || value == " ")
+                    {
+                        name = value;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Name cannot be empty");
+                        throw new ArgumentOutOfRangeException("value");
+                    }
                 }
             }
+
+            public int Egg
+            {
+                get { return egg; }
+                set { egg = value; }
+            }
+
         }
         static void Main()
         {
+            Chiken chiken = new Chiken();
             Console.Write("Name: ");
-            string name = Console.ReadLine();
+            chiken.Name = Console.ReadLine();
             Console.Write("Age: ");
-            int age = Convert.ToInt32(Console.ReadLine());
-            Chiken a=new Chiken(age,name);
-            int res = a.cw();
-            if (res == 1)
-            {
-                Console.WriteLine($"Chiken {name} (age {age}) can produce {res} eggs per day.");
-            }
+            chiken.Age = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"Chiken {chiken.Name} (age {chiken.Age}) can produce 1 eggs per day.");
         }
     }
 }
